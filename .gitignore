@@ -3,3 +3,6 @@
 
 # binary folder
 bin/*
+
+# MacBook config folder for Finder
+.DS_Store
