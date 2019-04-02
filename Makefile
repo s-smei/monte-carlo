@@ -1,12 +1,10 @@
-CXX		  := clang++
-CXX_FLAGS := -Wall -Wextra -std=c++17 -g
+CC		:= g++
+CXX_FLAGS := -Wall -Wextra -std=c++17
 
 BIN		:= bin
 SRC		:= src
 INCLUDE	:= include
-LIB		:= lib
-
-LIBRARIES	:=
+LIBRARIES	:= config++
 EXECUTABLE	:= main
 
 
@@ -16,7 +14,7 @@ run: clean all
 	./$(BIN)/$(EXECUTABLE)
 
 $(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
-	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) -L$(LIB) $^ -o $@ $(LIBRARIES)
+	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) $^ -o $@ -L$(LIBRARIES)
 
 clean:
 	-rm $(BIN)/*
