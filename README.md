@@ -1,0 +1,1 @@
+Project to simulate Monte Carlo problem on rabbits and wolfs on an island with ideal conditions for living and breeding.

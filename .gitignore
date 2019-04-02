@@ -1,0 +1,5 @@
+# Visual Code configurations
+.vscode/*
+
+# binary folder
+bin/*
