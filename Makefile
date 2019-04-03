@@ -1,4 +1,10 @@
-CC		:= g++
+UNAME := $(shell uname)
+ifeq ($(UNAME), Darwin)
+	CXX	:= clang++
+else
+	CXX := g++
+endif
+
 CXX_FLAGS := -Wall -Wextra -std=c++17
 
 BIN		:= bin
@@ -14,7 +20,7 @@ run: clean all
 	./$(BIN)/$(EXECUTABLE)
 
 $(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
-	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) $^ -o $@ -L$(LIBRARIES)
+	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) $^ -o $@ -l$(LIBRARIES)
 
 clean:
 	-rm $(BIN)/*
