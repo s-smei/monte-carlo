@@ -24,3 +24,7 @@ $(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
 
 clean:
 	-rm $(BIN)/*
+
+test_example: examples/*.cpp
+	clang++ -std=c++11 -Wall -I$(INCLUDE) -c examples/main.cpp -o examples/main.o
+	clang++ -std=c++11 -Wall -I$(INCLUDE) -o bin/test examples/main.o examples/text-fruct.cpp && bin/test
