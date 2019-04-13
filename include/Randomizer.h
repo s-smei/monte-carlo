@@ -5,10 +5,9 @@ class Randomizer {
     private:
         double getRandom();
     public:
-        FamilyState sex();
+        FamilyState sex(double);
         int childrenBreed(int, int);
-        bool findRabbit();
-        bool catchRabbit();
-        bool catchWolf();
-        int weekNextBreed();  // for starting configuration process
+        bool findRabbit(double , double);
+        bool catchAnimal(double);
+        int weekNextBreed(int);  // for starting configuration process
 }
