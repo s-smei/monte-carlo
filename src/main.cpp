@@ -1,6 +1,6 @@
 #include <iostream>
 #include <ctime>
-#include <stdlib>
+#include "Randomizer.h"
 
 int main() {
     srand(time(0));  // set random

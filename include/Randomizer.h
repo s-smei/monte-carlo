@@ -1,13 +1,15 @@
 #pragma once
 #include "structures.h"
+#include <cstdlib>
+#include <cmath>
 
 class Randomizer {
     private:
         double getRandom();
     public:
-        FamilyState sex(double);
+        Sex sex(double);
         int childrenBreed(int, int);
         bool findRabbit(double , double);
         bool catchAnimal(double);
         int week(int);  // for starting configuration process
-}
+};
