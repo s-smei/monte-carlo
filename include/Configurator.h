@@ -8,34 +8,38 @@ class Configurator {
         Configurator(const char* fileName);
         const libconfig::Config cfg;
         int simulationLength;
-        struct field {
+        struct Field {
             int area;
             int maxWolfDensity;
-        };
+        } field;
 
-        struct rabbit {
+        struct Rabbit {
             int lifeLength;
             int ageAdult;
-            double manChance;
-            struct families {
+            double maleChance;
+
+            struct Families {
                 int amount;
                 int minChildren;
                 int maxChildren;
                 int breedCycle;
                 int timePregnant;
-            };
-        };
+            } families;
+        } rabbit;
         
         struct wolf {
             int lifeLength;
             int ageAdult;
+            double maleChance;
+
             int noFoodDeath;
             double maxDistance;
             double findDiameter;
             double chanceHunt;
             double chanceDrop;
             bool dropEveryday;
-            struct families {
+
+            struct Families {
                 int amount;
                 int minChildren;
                 int maxChildren;
@@ -44,8 +48,9 @@ class Configurator {
                 int ageYoung;
                 int ageMature;
                 int childFoodFrequency;
-            };
-        };
+            } families;
+        } wolf;
+        
         void readSettings();
         void configureRabbit();
         void configureWolf();
