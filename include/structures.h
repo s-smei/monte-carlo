@@ -8,6 +8,6 @@ enum class FamilyState {
 };
 
 enum class Sex {
-    male=0,
-    female=1,
+    male,
+    female,
 };
