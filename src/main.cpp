@@ -1,5 +1,8 @@
 #include <iostream>
+#include <ctime>
+#include <stdlib>
 
 int main() {
-    std::cout << "Hello Easy C++ project!" << std::endl;
+    srand(time(0));  // set random
+    return 0;
 }
