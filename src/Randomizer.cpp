@@ -3,11 +3,11 @@
 #include <stdlib>
 #include <cmath>
 
-double getRandom() {
+double Randomizer::getRandom() {
     return (double) rand() / (RAND_MAX);
 }
 
-FamilyState sex(double maleChance) {
+FamilyState Randomizer::sex(double maleChance) {
     if (getRandom() <= maleChance) {  // todo take param from configuration
         return FamilyState::male;
     }
@@ -16,7 +16,7 @@ FamilyState sex(double maleChance) {
     }
 }
 
-int childrenBreed(int min, int max) {
+int Randomizer::childrenBreed(int min, int max) {
     parts = max - min + 1;
     double chancePerPart = 1 / parts;
     randValue = getRandom();
@@ -27,12 +27,12 @@ int childrenBreed(int min, int max) {
     return -1;  // catch error
 }
 
-bool findRabbit(double freeTrace, double maxDistance) {
+bool Randomizer::findRabbit(double freeTrace, double maxDistance) {
     double distance = - freeTrace * std::log(getRandom());
     return (distance <= maxDistance);
 }
 
-bool catchAnimal(double chance) {
+bool Randomizer::catchAnimal(double chance) {
     if (getRandom() <= chance) {
         return true;
     }
@@ -41,7 +41,7 @@ bool catchAnimal(double chance) {
     }
 }
 
-int week(int maxWeek) {  // Get random week from cycle
+int Randomizer::week(int maxWeek) {  // Get random week from cycle
     parts = maxWeek;
     double chancePerPart = 1 / parts;
     randValue = getRandom();
