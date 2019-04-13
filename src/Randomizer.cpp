@@ -41,8 +41,8 @@ bool catchAnimal(double chance) {
     }
 }
 
-int weekNextBreed(int breedCycle) {
-    parts = breedCycle;
+int week(int maxWeek) {  // Get random week from cycle
+    parts = maxWeek;
     double chancePerPart = 1 / parts;
     randValue = getRandom();
     for (int i=1; i<=parts; ++i) {
