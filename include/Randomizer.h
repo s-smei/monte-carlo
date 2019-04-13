@@ -9,6 +9,5 @@ class Randomizer {
         int childrenBreed(int, int);
         bool findRabbit(double , double);
         bool catchAnimal(double);
-        int weekNextBreed(int);  // for starting configuration process
-        int timeBorn(int);
+        int week(int);  // for starting configuration process
 }
