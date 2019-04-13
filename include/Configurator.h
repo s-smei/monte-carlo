@@ -1,8 +1,12 @@
 #pragma once
+#include <libconfig.h++>
 #include <utility>
+#include <string>
 
 class Configurator {
     public:
+        libconfig::Config cfg;
+        const libconfig::Setting& root;
         int simulationLength;
         struct field {
             int area;
@@ -42,8 +46,8 @@ class Configurator {
                 int childFoodFrequency;
             };
         };
-
-        void readSettings();
+        Configurator(std::string);
+        void readSettings(std::string);
         void configureRabbit();
         void configureWolf();
 }
