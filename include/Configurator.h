@@ -5,8 +5,8 @@
 
 class Configurator {
     public:
-        libconfig::Config cfg;
-        const libconfig::Setting& root;
+        Configurator(const char* fileName);
+        const libconfig::Config cfg;
         int simulationLength;
         struct field {
             int area;
@@ -46,8 +46,7 @@ class Configurator {
                 int childFoodFrequency;
             };
         };
-        Configurator(std::string);
-        void readSettings(std::string);
+        void readSettings();
         void configureRabbit();
         void configureWolf();
-}
+};

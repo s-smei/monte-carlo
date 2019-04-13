@@ -3,13 +3,20 @@
 using namespace std;
 using namespace libconfig;
 
-Configurator::Configurator(string fileName) {
-    cfg.readle(fileName);
-    root = cfg.getRoot()
-    readSettings(string fileName);
+Configurator::Configurator(const char* fileName) {
+    Config cfg;
+    cfg.readFile(fileName);  
+    readSettings();
 }
 
-Configurator::readSettings(string fileName) {
-    Config cfg;
-    // continue from example
+void Configurator::readSettings() {
+    string name = cfg.lookup("name");
+    //const Setting &books = root["inventory"]["books"];
+    //const Setting &book = books[i];
+    //ook.lookupValue("title", title);
+    const libconfig::Setting& root = cfg.getRoot();
+
+    root.lookupValue("simulationLength", simulationLength);
+    //const Setting &field = root["field"];
+    
 }
