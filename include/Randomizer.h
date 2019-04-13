@@ -1,5 +1,4 @@
 #pragma once
-#include <random>
 #include "structures.h"
 
 class Randomizer {
@@ -7,7 +6,7 @@ class Randomizer {
         double getRandom();
     public:
         FamilyState sex();
-        int childrenBreed();
+        int childrenBreed(int, int);
         bool findRabbit();
         bool catchRabbit();
         bool catchWolf();
