@@ -5,8 +5,6 @@ using std::shared_ptr;
 Animal::Animal(int tBorn, Sex s) : 
     timeBorn(tBorn),
     sex(s) {
-    familyState = (sex == Sex::male)?
-        FamilyState::needFemale : FamilyState::needMale;
 };
 
 bool Animal::isAlive(int week, int lifeLength) {
@@ -19,12 +17,10 @@ bool Animal::needFamily() {
     else return familyState == FamilyState::needMale;
 }
 
-shared_ptr<Family> Animal::getFamily() {
-    return pFamily;
+Family* Animal::getFamily() {
+    return family;
 }
 
-void Animal::setFamily(shared_ptr<Family> f) {
-    pFamily.reset();
-    familyState = FamilyState::inFamily;
-    pFamily = f;
+void Animal::setFamily(Family* f) {
+    family = f;
 }

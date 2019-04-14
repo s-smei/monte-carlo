@@ -8,8 +8,8 @@
 
 class HabitantContainer {
     public:
-        std::vector<Rabbit&> rabbits;
-        std::vector<Wolf&>   wolfs;
-        std::vector<Family&> families;
-        std::vector<Animal&> aloneAnimals;
+        std::vector<Rabbit*> rabbits;
+        std::vector<Wolf*>   wolfs;
+        std::vector<Family*> families;
+        std::vector<Animal*> aloneAnimals;
 };
