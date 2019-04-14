@@ -7,7 +7,8 @@ To see UML scheme of the project open MonteCarlo.xml in [draw](https://www.draw.
 Stages of the solving:
 - [x] skeleton of the project in header files.
 - [x] add configuration.
-- [ ] create folder for test cases.
+- [x] create folder for test cases.
 - [ ] create behavioral scenario.
 - [ ] create files for unit-testing.
+- [x] save objects while compiling the whole project.
 ---
