@@ -3,4 +3,4 @@
 
 class Rabbit: public Animal {
 
-}
+};

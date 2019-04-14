@@ -12,4 +12,4 @@ class HabitantContainer {
         std::vector<Wolf&>   wolfs;
         std::vector<Family&> families;
         std::vector<Animal&> aloneAnimals;
-}
+};

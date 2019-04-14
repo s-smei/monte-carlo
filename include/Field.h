@@ -11,4 +11,4 @@ class Field {
         double freeTrace();
         double densityWolf();
         double configure();
-}
+};

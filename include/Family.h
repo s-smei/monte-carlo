@@ -10,4 +10,4 @@ class Family {
         virtual void nextBreed();
         virtual void breed();
         virtual void setNextBreed();
-}
+};

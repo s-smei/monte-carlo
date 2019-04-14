@@ -7,4 +7,4 @@ class Wolf : public Animal {
         double chanceHunt;
     public:
         virtual void hunt();
-}
+};

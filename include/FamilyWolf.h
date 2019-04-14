@@ -7,4 +7,4 @@ class FamilyWolf : public Family {
     public:
         bool childrenAlive();
         bool needHunt();
-}
+};

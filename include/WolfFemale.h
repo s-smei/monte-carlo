@@ -6,4 +6,4 @@ class WolfFemale : public Wolf {
         bool canHunt;
     public:
         void setCanHunt();
-}
+};

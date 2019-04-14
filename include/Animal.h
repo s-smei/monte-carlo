@@ -12,4 +12,4 @@ class Animal {
         virtual bool isAlive();
         virtual bool needFamily();
         virtual Family& getFamily();
-}
+};

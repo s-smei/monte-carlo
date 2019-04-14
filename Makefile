@@ -23,7 +23,7 @@ $(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
 	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) $^ -o $@ -l$(LIBRARIES)
 
 clean:
-	-rm $(BIN)/*
+	-rm -f $(BIN)/*
 
 test_example: examples/*.cpp
 	clang++ -std=c++11 -Wall -I$(INCLUDE) -c examples/main.cpp -o examples/main.o

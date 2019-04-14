@@ -12,4 +12,4 @@ class EventController {
         void makeBreed(Family&);
         bool huntRabbit(Animal&);
         bool huntWolf(Wolf&);
-}
+};
