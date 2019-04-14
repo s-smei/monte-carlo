@@ -4,7 +4,10 @@ The problem is being solving on rabbits and wolfs on an island with ideal condit
 
 To see UML scheme of the project open MonteCarlo.xml in [draw](https://www.draw.io).
 
-Status of the solving:
-- skeleton of the project in header files.
-
+Stages of the solving:
+- [x] skeleton of the project in header files.
+- [x] add configuration.
+- [ ] create folder for test cases.
+- [ ] create behavioral scenario.
+- [ ] create files for unit-testing.
 ---
