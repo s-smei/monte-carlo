@@ -10,16 +10,13 @@ Animal::Animal(int tBorn, Sex s) :
 };
 
 bool Animal::isAlive(int week, int lifeLength) {
-    return (week-timeBorn < lifeLength)? true : false;
+    return week - timeBorn < lifeLength;
 }
 
 bool Animal::needFamily() {
     if (familyState == FamilyState::needFemale)
         return true;
-    else if (familyState == FamilyState::needMale)
-        return true;
-    else
-        return false;
+    else return familyState == FamilyState::needMale;
 }
 
 shared_ptr<Family> Animal::getFamily() {
