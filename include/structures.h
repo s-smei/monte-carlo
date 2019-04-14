@@ -1,7 +1,8 @@
 #pragma once
 
 enum class FamilyState {
-    need,
+    needMale,
+    needFemale,
     inFamily,
     divorced,
     notMature,

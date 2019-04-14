@@ -1,15 +1,21 @@
 #pragma once
-#include "Family.h"
 #include "structures.h"
+#include <memory>
 
+class Family;
 
 class Animal {
-    protected:
+    private:
         int timeBorn;
+        FamilyState familyState;
         Sex sex;
-        Family& family;
+        std::shared_ptr<Family> pFamily;
     public:
-        virtual bool isAlive();
-        virtual bool needFamily();
-        virtual Family& getFamily();
+        Animal(int tBorn, Sex s);
+        virtual bool isAlive(int, int);
+        bool needFamily();
+        std::shared_ptr<Family> getFamily();
+        void setFamily(std::shared_ptr<Family>);
+        void setFamilyState(FamilyState fs) { familyState=fs; };
+        FamilyState getFamilyState() { return familyState; };
 };

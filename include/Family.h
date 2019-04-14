@@ -1,10 +1,11 @@
 #pragma once
 #include <utility>
-#include "Animal.h"
+
+class Animal;
 
 class Family {
     protected:
-        std::pair<Animal, Animal> adults;
+        std::pair<Animal&, Animal&> adults;
         int timeNextBreed;
     public:
         virtual void nextBreed();
