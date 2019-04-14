@@ -1,29 +1,80 @@
 UNAME := $(shell uname)
 ifeq ($(UNAME), Darwin)
-	CXX	:= clang++
+	CC	:= clang++
 else
-	CXX := g++
+	CC := g++
 endif
 
-CXX_FLAGS := -Wall -Wextra -std=c++17
+#The Target Binary Program
+TARGET      := program
 
-BIN		:= bin
-SRC		:= src
-INCLUDE	:= include
-LIBRARIES	:= config++
-EXECUTABLE	:= main
+#The Directories, Source, Includes, Objects, Binary and Resources
+SRCDIR      := src
+INCDIR      := include
+BUILDDIR    := obj
+TARGETDIR   := bin
+RESDIR      := res
+SRCEXT      := cpp
+DEPEXT      := d
+OBJEXT      := o
+
+#Flags, Libraries and Includes
+CFLAGS      := -Wall -O3 -g -std=c++17
+LIB         := -lm  -lconfig++
+INC         := -I$(INCDIR) -I$(INCDIR)/Animal -I$(INCDIR)/Family
+INCDEP      := $(INC)
 
 
-all: $(BIN)/$(EXECUTABLE)
+SOURCES     := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+OBJECTS     := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
 
-run: clean all
-	./$(BIN)/$(EXECUTABLE)
+#Default Make
+all: resources $(TARGET)
 
-$(BIN)/$(EXECUTABLE): $(SRC)/*.cpp
-	$(CXX) $(CXX_FLAGS) -I$(INCLUDE) $^ -o $@ -l$(LIBRARIES)
+#Remake
+remake: cleaner all
 
+#Copy Resources from Resources Directory to Target Directory
+define resources =
+if [[ $(RESDIR)/* -ne 0 ]];
+then cp -r $(RESDIR)/* $(TARGETDIR)
+fi
+endef
+resources: directories
+	$(value resources)
+
+#Make the Directories
+directories:
+	@mkdir -p $(TARGETDIR)
+	@mkdir -p $(BUILDDIR)
+
+#Clean only Objecst
 clean:
-	-rm -f $(BIN)/*
+	@$(RM) -rf $(BUILDDIR)
+
+#Full Clean, Objects and Binaries
+cleaner: clean
+	@$(RM) -rf $(TARGETDIR)
+
+#Pull in dependency info for *existing* .o files
+-include $(OBJECTS:.$(OBJEXT)=.$(DEPEXT))
+
+#Link
+$(TARGET): $(OBJECTS)
+	$(CC) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
+
+#Compile
+$(BUILDDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	@$(CC) $(CFLAGS) $(INCDEP) -MM $(SRCDIR)/$*.$(SRCEXT) > $(BUILDDIR)/$*.$(DEPEXT)
+	@cp -f $(BUILDDIR)/$*.$(DEPEXT) $(BUILDDIR)/$*.$(DEPEXT).tmp
+	@sed -e 's|.*:|$(BUILDDIR)/$*.$(OBJEXT):|' < $(BUILDDIR)/$*.$(DEPEXT).tmp > $(BUILDDIR)/$*.$(DEPEXT)
+	@sed -e 's/.*://' -e 's/\\$$//' < $(BUILDDIR)/$*.$(DEPEXT).tmp | fmt -1 | sed -e 's/^ *//' -e 's/$$/:/' >> $(BUILDDIR)/$*.$(DEPEXT)
+	@rm -f $(BUILDDIR)/$*.$(DEPEXT).tmp
+
+#Non-File Targets
+.PHONY: all remake clean cleaner
 
 test_example: examples/*.cpp
 	clang++ -std=c++11 -Wall -I$(INCLUDE) -c examples/main.cpp -o examples/main.o

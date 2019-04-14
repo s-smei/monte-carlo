@@ -7,7 +7,7 @@ double Randomizer::getRandom() {
 }
 
 Sex Randomizer::sex(double maleChance) {
-    if (getRandom() <= maleChance) {  // todo take param from configuration
+    if (getRandom() < maleChance) {  // todo take param from configuration
         return Sex::male;
     }
     else {

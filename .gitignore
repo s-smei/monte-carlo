@@ -9,3 +9,7 @@ bin/*
 
 # Folder with some notes
 examples/*
+
+# testing machine
+include/catch.hpp
+obj
