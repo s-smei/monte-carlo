@@ -5,14 +5,16 @@
 
 class Animal;
 typedef std::unique_ptr<Animal> pAnimal;
+typedef std::pair<pAnimal, pAnimal> pairAnimal;
 
 class Family {
     protected:
-        std::pair<pAnimal, pAnimal> adults;
+        pairAnimal adults;
         int timeNextBreed;
     public:
+        Family(pAnimal, pAnimal, int);
         bool nextBreed(int) const;
         virtual void breed(int, Sex)=0;
-        virtual void balance()=0;
-        void setNextBreed(int, int);
+        virtual void balance();
+        void setNextBreed(int);
 };
