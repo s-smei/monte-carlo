@@ -5,10 +5,9 @@
 class Field {
     private:
         int week;
-        HabitantContainer& habitants_;
-        EventController& controller_;
+        HabitantContainer habitants_;
     public:
+        Field();
         double freeTrace();
         double densityWolf();
-        double configure();
 };

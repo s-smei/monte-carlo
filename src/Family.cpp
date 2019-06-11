@@ -1,10 +1,11 @@
 #include "Family.h"
 #include "HabitantContainer.h"
 
-Family::Family(pAnimal him, pAnimal her, int tBreed):
-    timeNextBreed(tBreed){
-        adults.first = std::move(him);
-        adults.second = std::move(her);
+Family::Family(wAnimal& him, wAnimal& her, int tBreed):
+    timeNextBreed(tBreed)
+    {
+        adults.first = him;
+        adults.second = her;
     }
 
 

@@ -20,7 +20,7 @@ OBJEXT      := o
 
 #Flags, Libraries and Includes
 CFLAGS      := -Wall -O3 -g -std=c++17
-LIB         := -lm  -lconfig++
+LIB         := -lconfig++
 INC         := -I$(INCDIR) -I$(INCDIR)/Animal -I$(INCDIR)/Family
 INCDEP      := $(INC)
 
